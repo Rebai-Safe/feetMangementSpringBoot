@@ -46,16 +46,18 @@ public class ChauffeurController {
 	}
 	
 	
-	@GetMapping("/chauffeursDispo/{dateDeb}")
-	public List<Chauffeur> getChauffeurDispo(@PathVariable("dateDeb") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dateDeb) 
-   {
-	 
-		
-		 return chauffeurRepository.getDispoChauffeur(dateDeb);
+	@GetMapping("/chauffeursCount")
+	public Long getCountChauffeurs() {
+	
+		return chauffeurRepository.getCountChauffeurs();
 	}
+
 	
-	
-	
+	@PostMapping("/chauffeursDispo")
+	public List<Chauffeur> getChauffeurDispo(@RequestBody AffectationChauffeur chauffeur) {
+		Date dateDeb = chauffeur.getDateDebut();
+		return chauffeurRepository.getDispoChauffeur(dateDeb);
+	}
 	
 	
 	

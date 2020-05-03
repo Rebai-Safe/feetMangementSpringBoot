@@ -37,7 +37,7 @@ public class Vehicule {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
    
     @Column(name = "cout_acquisition")
-    private Double coutAcquisition;
+    private BigDecimal coutAcquisition;
    
     @Column(name = "kilometrage_actuel")
     private BigDecimal kilometrageActuel;
@@ -147,12 +147,12 @@ public class Vehicule {
 	}
 
 
-	public Double getCoutAcquisition() {
+	public BigDecimal getCoutAcquisition() {
 		return coutAcquisition;
 	}
 
 
-	public void setCoutAcquisition(Double coutAcquisition) {
+	public void setCoutAcquisition(BigDecimal coutAcquisition) {
 		this.coutAcquisition = coutAcquisition;
 	}
 
