@@ -43,7 +43,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		//method chaining
 		http.authorizeRequests()
 		    .antMatchers("/**") //antMatchers to specify the path here all urls
-		    .hasRole("ADMIN") //tell that all url should be accessible by users who has admin role
+		    .hasRole("ADMIN") //tell that all url should be accessible by users who has admin role hasAnyRole() to specify multiple role
 		    .and()
 		    .formLogin(); //use form login
 		     
@@ -60,7 +60,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	/*
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/").permitAll();
+		http.authorizeRequests().antMatchers("/").permitAll();//ANY BODY CAN USE THIS 
 	}
 	
 	
