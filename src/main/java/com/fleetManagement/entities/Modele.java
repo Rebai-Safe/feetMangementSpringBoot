@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -19,7 +20,7 @@ import javax.persistence.Id;
 
 @Entity
 @Table(name = "modele")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id",scope = Modele.class)
+
 public class Modele {
 	
 	    @Id
@@ -34,7 +35,7 @@ public class Modele {
 	    private String libelleModele;
 	    
 	    @OneToMany(mappedBy = "idModele")
-	   
+	    @JsonIgnore
 	    private List<Vehicule> vehiculeList;
 	   
 	    @JoinColumn(name = "id_marque")

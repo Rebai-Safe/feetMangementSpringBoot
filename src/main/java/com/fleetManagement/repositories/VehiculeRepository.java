@@ -24,7 +24,7 @@ public interface VehiculeRepository extends JpaRepository<Vehicule, Integer>{
 	   @Query("Select new com.fleetManagement.beans.VehiculesByBrand(ma.libelleMarque as libelleMarque , count(*) as nombre) from Vehicule v , Modele m , Marque ma where v.idModele.idModele = m.idModele and m.idMarque.idMarque = ma.idMarque group by ma.libelleMarque")
        public List<VehiculesByBrand> getVehiculesByBrand();
 
-	   @Query("Select  count(*)  from Vehicule v  group by v.idVehicule")
+	   @Query("Select  count(*)  from Vehicule v")
        public Long getCountVehicules();
 	   
 	   @Query("Select  count(*)  from Vehicule v where v.idEtat.libelleEtat = :etat group by v.idVehicule ")

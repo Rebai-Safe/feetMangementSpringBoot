@@ -1,11 +1,11 @@
 package com.fleetManagement.controllers;
 
+
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -37,6 +37,13 @@ public class ChauffeurController {
 	@RequestMapping("/chauffeurs")
 	public List<Chauffeur> getChauffeurs() {
 		return chauffeurRepository.findAll();
+	}
+	
+	@RequestMapping("/permisExpirees")
+	public List<Chauffeur> getPermisExpiree(){
+		Date date = new Date(System.currentTimeMillis());
+		System.out.println("date courante "+date);
+		return chauffeurRepository.getPermisExpiree(date);
 	}
 	
 	@GetMapping("/chauffeurs/{id}")

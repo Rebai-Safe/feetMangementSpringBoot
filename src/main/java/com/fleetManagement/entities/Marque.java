@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -17,7 +18,7 @@ import javax.persistence.Id;
 
 @Entity
 @Table(name = "marque")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id",scope = Marque.class)
+
 public class Marque {
 	
 	@Id
@@ -31,6 +32,7 @@ public class Marque {
     @Column(name = "code_marque")
     private String codeMarque;
     @OneToMany(mappedBy = "idMarque")
+    @JsonIgnore
     private List<Modele> modeleList;
     
 	public Integer getIdMarque() {

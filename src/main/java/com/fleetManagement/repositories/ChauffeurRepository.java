@@ -16,8 +16,10 @@ public interface ChauffeurRepository extends JpaRepository<Chauffeur, Integer> {
 	   @Query("Select c from Chauffeur c where not exists (select ch.idChauffeur from AffectationChauffeur ch where dateFin > :dateDeb)")
 	   public List<Chauffeur> getDispoChauffeur(@Param("dateDeb") Date dateDeb);
 
+	   @Query("Select c from Chauffeur c where dateValiditePermis < :dateCurrent")
+	   public List<Chauffeur> getPermisExpiree(@Param("dateCurrent") Date dateCurrent);
 	   
-	   @Query("Select  count(*)  from Chauffeur Ch  group by ch.idChauffeur")
+	   @Query("Select  count(*)  from Chauffeur ch")
        public Long getCountChauffeurs();
 
 }
